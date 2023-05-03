@@ -4,24 +4,33 @@ using UnityEngine;
 
 public class GridBehaviorScript : MonoBehaviour
 {
-    // Create array of tiles or pieces (prefabs) idk yet i have to rethink some stuff
+    // Game Piece reference
     public GameObject piecePrefab;
 
-    private GameObject[,] grid;
+    // Board Tile prefab
+    public GameObject boardTilePrefab;
+
+    /// <summary>
+    /// Array of Game Piece objects to represent internal grid
+    /// </summary>
+    private GameObject[,] grid; // maybe change to Transform[] or PieceBehaviorScript[] later
 
     public GameObject[,] ConstructGrid(PlayerBehaviorScript player1)
     {
         grid = new GameObject[8, 8];
-        for (int i = 0; i < 8;)
+
+        for (int i = 0; i < 8; i++)
         {
-            for (int j = 0; j < 8;)
+            for (int j = 0; j < 8; j++)
             {
-                if ((i / 2) >= 12) break;
-                grid[i, j] = player1.GetPieces()[i / 2]; // CHANGE SINCE THIS IS PROBABLY REALLY WRONG
-                j += 2;
+                if ((i + j) < 24 && i + j % 2 == 0) grid[i, j] = player1.GetPieces()[i];
+                else grid[i, j] = null;
             }
-            i += 2;
         }
         return grid;
     }
+
+    // GetAvailableSpaces()
+
+    // CanMove or MovePiece
 }

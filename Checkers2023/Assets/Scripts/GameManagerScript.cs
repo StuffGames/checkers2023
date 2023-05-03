@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class GameManagerScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // Get the current player and grid
+    public PlayerBehaviorScript player1;
+    public GridBehaviorScript grid;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        // Start by constructing the player tiles and the grid
     }
 }

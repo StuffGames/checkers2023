@@ -307,6 +307,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95101f94b1ca7b48a44f66a206c549c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1: {fileID: 85143921}
+  grid: {fileID: 1496245298}
 --- !u!1 &1496245295
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,3 +367,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   piecePrefab: {fileID: 0}
+  boardTilePrefab: {fileID: 0}
