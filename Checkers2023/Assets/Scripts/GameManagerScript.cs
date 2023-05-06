@@ -11,5 +11,17 @@ public class GameManagerScript : MonoBehaviour
     private void Start()
     {
         // Start by constructing the player tiles and the grid
+        GameObject[] player1Pieces = player1.ConstructPieces();
+        foreach (GameObject piece in player1Pieces)
+        {
+            Debug.Log("Piece: " + piece.name);
+        }
+
+        GameObject[,] gameGrid = grid.ConstructGrid(player1);
+        foreach (GameObject gridSquare in gameGrid)
+        {
+            Debug.Log("Grid Square: " + ((gridSquare == null) ? "null" : gridSquare.name));
+        }
+
     }
 }

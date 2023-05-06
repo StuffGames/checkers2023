@@ -61,18 +61,26 @@ public class PlayerBehaviorScript : MonoBehaviour
     /// <returns>True if succesfully deleted, false if unable to delete</returns>
     public bool DeletePiece(int id)
     {
+        if (numOfPieces <= 0) return false;
+        if (id < 0 || id > pieces.Length) return false;
         GameObject pieceToDelete = pieces[id];
         if (pieceToDelete == null) return false;
 
         pieces[id] = null;
         Destroy(pieceToDelete);
+        numOfPieces--;
         return true;
     }
 
+    /// <summary>
+    /// Construct the number of pieces for the player to have. The piecePrefab gets instantiated then added to the array.
+    /// It becomes the parent of the current player object.
+    /// </summary>
+    /// <returns>The array of peices for the player</returns>
     public GameObject[] ConstructPieces()
     {
         pieces = new GameObject[numOfPieces]; // numOfPieces should be 12
-        for (int i = 0; i < 12; i++)
+        for (int i = 0; i < numOfPieces; i++)
         {
             GameObject newPiece = Instantiate(piecePrefab, transform);
             // Add stuff to the new piece before adding to the array
