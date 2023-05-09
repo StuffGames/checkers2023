@@ -15,6 +15,9 @@ public class GridBehaviorScript : MonoBehaviour
     /// </summary>
     private GameObject[,] grid; // maybe change to Transform[] or PieceBehaviorScript[] later
 
+    /// <summary>
+    /// Array of Board Squares that visualize the game board
+    /// </summary>
     private GameObject[,] visualBoard;
 
     /// <summary>
@@ -29,26 +32,42 @@ public class GridBehaviorScript : MonoBehaviour
         grid = new GameObject[8, 8];
         visualBoard = new GameObject[8, 8];
 
-        for (int i = 0; i < 8; i++)
+        GameObject[] pieces = player1.GetPieces();
+        int pieceIndex = 0;
+
+        for (int i = 0; i < 8; i++) // For every row
         {
-            for (int j = 0; j < 8; j++)
+            for (int j = 0; j < 8; j++) // For every column
             {
-                if ((i + j) < (player1.GetNumPieces() *2) /*should be 24*/ && i + j % 2 == 0) grid[i, j] = player1.GetPieces()[i];
-                else grid[i, j] = null;
-                visualBoard[i, j] = Instantiate(boardTilePrefab, transform);
-                if ((i + j) % 2 == 0) visualBoard[i, j].GetComponent<BoardSquareScript>().changeSprite();
-                visualBoard[i, j].transform.position = new Vector3(3.5f - i, 3.5f - j);
+                if (pieceIndex < player1.GetNumPieces() && (i + j) % 2 == 0)
+                {
+                    grid[j, i] = pieces[pieceIndex];
+                    pieceIndex++;
+                } 
+                else grid[j, i] = null;
+                visualBoard[j, i] = Instantiate(boardTilePrefab, transform);
+                if ((i + j) % 2 == 0) visualBoard[j, i].GetComponent<BoardSquareScript>().ChangeSprite();
+                visualBoard[j, i].transform.position = new Vector3(3.5f - j, 3.5f - i);
+
             }
         }
         return grid;
     }
 
-    public GameObject[,] getGrid()
+    /// <summary>
+    /// Get the grid array
+    /// </summary>
+    /// <returns>2D GameObject Array</returns>
+    public GameObject[,] GetGrid()
     {
         return grid;
     }
 
-    public GameObject[,] getVisualBoard()
+    /// <summary>
+    /// Get the visual board squares (BoardSquare prefabs)
+    /// </summary>
+    /// <returns>2D array of BoardSquare prefabs</returns>
+    public GameObject[,] GetVisualBoard()
     {
         return visualBoard;
     }

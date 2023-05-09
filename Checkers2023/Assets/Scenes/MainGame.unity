@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7d6c5dbc5117654889ab2d0d31577c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfPieces: 1
+  numOfPieces: 12
   game: {fileID: 250624062}
   grid: {fileID: 1496245298}
   piecePrefab: {fileID: 8449684844848775341, guid: 0c42b4ebb330ed94e8a2be18cf23b122, type: 3}

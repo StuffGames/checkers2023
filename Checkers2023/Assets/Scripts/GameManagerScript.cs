@@ -14,14 +14,28 @@ public class GameManagerScript : MonoBehaviour
         GameObject[] player1Pieces = player1.ConstructPieces();
         foreach (GameObject piece in player1Pieces)
         {
-            Debug.Log("Piece: " + piece.name);
+            Debug.Log("Piece: " + piece.GetComponent<PieceBehaviorScript>().GetID());
         }
 
         GameObject[,] gameGrid = grid.ConstructGrid(player1);
-        foreach (GameObject gridSquare in gameGrid)
+        GameObject[,] visualBoard = grid.GetVisualBoard();
+        for (int i = 0; i < gameGrid.GetLength(0); i++)
         {
-            Debug.Log("Grid Square: " + ((gridSquare == null) ? "null" : gridSquare.name));
+            for (int j = 0; j < gameGrid.GetLength(0); j++)
+            {
+                //Debug.Log(i + ", "+ j);
+                GameObject gridSquare = gameGrid[i,j];
+                if (gridSquare != null)
+                {
+                    PieceBehaviorScript piece = gridSquare.GetComponent<PieceBehaviorScript>();
+                    Debug.Log("GridSquare: " + piece.GetID());
+                    piece.transform.position = visualBoard[i, j].transform.position; // Maybe just switch this to Construct Grid
+                }
+                else
+                {
+                    Debug.Log("GridSquare: null");
+                }
+            }
         }
-
     }
 }

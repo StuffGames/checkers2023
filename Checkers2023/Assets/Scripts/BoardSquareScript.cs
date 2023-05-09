@@ -12,7 +12,7 @@ public class BoardSquareScript : MonoBehaviour
     /// <summary>
     /// Changes the sprite from blue to purple, or purple to blue depending on current sprite.
     /// </summary>
-    public void changeSprite ()
+    public void ChangeSprite ()
     {
         currentSprite.sprite = (currentSprite.sprite == blueSqaure) ? purpleSquare : blueSqaure;
     }

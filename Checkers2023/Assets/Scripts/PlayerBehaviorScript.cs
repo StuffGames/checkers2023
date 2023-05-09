@@ -84,6 +84,8 @@ public class PlayerBehaviorScript : MonoBehaviour
         {
             GameObject newPiece = Instantiate(piecePrefab, transform);
             // Add stuff to the new piece before adding to the array
+            PieceBehaviorScript p = newPiece.GetComponent<PieceBehaviorScript>();
+            p.SetID(i);
             pieces[i] = newPiece;
         }
         return pieces;
