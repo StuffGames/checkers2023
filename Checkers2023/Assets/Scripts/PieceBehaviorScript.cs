@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class PieceBehaviorScript : MonoBehaviour
 {
+    /// <summary>
+    /// The position of the piece relative to the board
+    /// </summary>
+    private Vector2Int pos; // could just be transform.position
 
-    private Vector2 pos; // could just be transform.position
     /// <summary>
     /// Denotes if the current piece is selected by the player
     /// </summary>
     private bool isSelected;
+
     /// <summary>
     /// Denotes if the current piece is a king or normal
     /// </summary>
     private bool isKing;
+
     /// <summary>
     /// The id of the current piece (for lookup or something idk)
     /// </summary>
@@ -21,7 +26,7 @@ public class PieceBehaviorScript : MonoBehaviour
 
     private void Start()
     {
-        pos = new Vector2(0, 0);
+        pos = new Vector2Int(0, 0);
         isSelected = false;
         isKing = false;
     }
@@ -48,10 +53,23 @@ public class PieceBehaviorScript : MonoBehaviour
         return id;
     }
 
-    public void SetPosition(Vector2 newPos)
+    /// <summary>
+    /// Set the current position of the piece on the board
+    /// </summary>
+    /// <param name="newPos">Position (x, y)</param>
+    public void SetPosition(Vector2Int newPos)
     {
         // edit position, maybe just use transform
         pos = newPos;
+    }
+
+    /// <summary>
+    /// Get the current position of the piece on the board
+    /// </summary>
+    /// <returns>Vector2Int of the position (x, y)</returns>
+    public Vector2Int GetPosition()
+    {
+        return pos;
     }
 
 }

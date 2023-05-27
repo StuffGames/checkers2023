@@ -35,19 +35,19 @@ public class GridBehaviorScript : MonoBehaviour
         GameObject[] pieces = player1.GetPieces();
         int pieceIndex = 0;
 
-        for (int i = 0; i < 8; i++) // For every row
+        for (int j = 0; j < 8; j++) // For every row
         {
-            for (int j = 0; j < 8; j++) // For every column
+            for (int i = 0; i < 8; i++) // For every column
             {
                 if (pieceIndex < player1.GetNumPieces() && (i + j) % 2 == 0)
                 {
-                    grid[j, i] = pieces[pieceIndex];
+                    grid[i, j] = pieces[pieceIndex];
                     pieceIndex++;
                 } 
-                else grid[j, i] = null;
-                visualBoard[j, i] = Instantiate(boardTilePrefab, transform);
-                if ((i + j) % 2 == 0) visualBoard[j, i].GetComponent<BoardSquareScript>().ChangeSprite();
-                visualBoard[j, i].transform.position = new Vector3(3.5f - j, 3.5f - i);
+                else grid[i, j] = null;
+                visualBoard[i, j] = Instantiate(boardTilePrefab, transform);
+                if ((i + j) % 2 == 0) visualBoard[i, j].GetComponent<BoardSquareScript>().ChangeSprite();
+                visualBoard[i, j].transform.position = new Vector3(i - 3.5f, j - 3.5f);//new Vector3(3.5f - j, 3.5f - i);
 
             }
         }
@@ -75,4 +75,16 @@ public class GridBehaviorScript : MonoBehaviour
     // GetAvailableSpaces()
 
     // CanMove or MovePiece
+    public bool MovePiece(PieceBehaviorScript piece, Vector2Int positionDropped)
+    {
+        // Check the available spaces from GetAvailableSpaces
+
+        // if positionDropped is not in the AvailableSpaces then return false
+
+        // else we can change the grid and return true
+        grid[positionDropped.x, positionDropped.y] = piece.gameObject;
+        grid[piece.GetPosition().x, piece.GetPosition().y] = null;
+        piece.SetPosition(new Vector2Int(positionDropped.x, positionDropped.y));
+        return true;
+    }
 }
