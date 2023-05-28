@@ -5,9 +5,9 @@ using UnityEngine;
 public class PieceBehaviorScript : MonoBehaviour
 {
     /// <summary>
-    /// The position of the piece relative to the board
+    /// The position of the piece relative to the board, 0-indexed
     /// </summary>
-    private Vector2Int pos; // could just be transform.position
+    private Vector2Int pos;
 
     /// <summary>
     /// Denotes if the current piece is selected by the player
@@ -17,7 +17,7 @@ public class PieceBehaviorScript : MonoBehaviour
     /// <summary>
     /// Denotes if the current piece is a king or normal
     /// </summary>
-    private bool isKing;
+    public bool isKing;
 
     /// <summary>
     /// The id of the current piece (for lookup or something idk)

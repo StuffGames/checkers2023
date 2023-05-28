@@ -6,6 +6,8 @@ public class BoardSquareScript : MonoBehaviour
 {
     public SpriteRenderer currentSprite;
 
+    private Vector2Int position;
+
     public Sprite blueSqaure;
     public Sprite purpleSquare;
 
@@ -15,5 +17,16 @@ public class BoardSquareScript : MonoBehaviour
     public void ChangeSprite ()
     {
         currentSprite.sprite = (currentSprite.sprite == blueSqaure) ? purpleSquare : blueSqaure;
+    }
+
+    public Vector2Int GetPosition()
+    {
+        return position;
+    }
+
+    public void SetPosition(Vector2Int pos)
+    {
+        // check if empty and stuff
+        position = pos;
     }
 }
