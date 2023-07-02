@@ -20,6 +20,12 @@ public class PlayerBehaviorScript : MonoBehaviour
     // Game piece
     public GameObject piecePrefab;
 
+    // Main Camera
+    public Camera mainCamera;
+
+    // Mouse position (vector)
+    private Vector2 mousePosition;
+
     /// <summary>
     /// Returns the current number of pieces the player has
     /// </summary>
@@ -90,5 +96,28 @@ public class PlayerBehaviorScript : MonoBehaviour
             pieces[i] = newPiece;
         }
         return pieces;
+    }
+
+    private void Update()
+    {
+        mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+
+        // When mouse clicked, check if piece selected
+        
+        if (Input.GetMouseButton(0))
+        {
+            // Create raycast to see if mouse is over game piece
+
+            RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector3.zero);
+
+            // if it is over game piece
+            if (hit.collider is not null)
+            {
+                // Send message to piece (that is now selected)
+                //hit.transform.GetComponent<PieceBehaviorScript>();
+
+                hit.transform.position = mousePosition;
+            }
+        }
     }
 }

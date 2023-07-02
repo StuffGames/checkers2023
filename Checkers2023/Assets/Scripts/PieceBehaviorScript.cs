@@ -5,6 +5,11 @@ using UnityEngine;
 public class PieceBehaviorScript : MonoBehaviour
 {
     /// <summary>
+    /// Collider of the piece
+    /// </summary>
+    //private Collider2D collider;
+
+    /// <summary>
     /// The position of the piece relative to the board, 0-indexed
     /// </summary>
     private Vector2Int pos;
@@ -34,6 +39,7 @@ public class PieceBehaviorScript : MonoBehaviour
     private void Update()
     {
         // Logic for picking up / selecting tile and moving it
+
     }
 
     /// <summary>
