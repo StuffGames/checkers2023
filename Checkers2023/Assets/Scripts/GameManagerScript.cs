@@ -14,7 +14,7 @@ public class GameManagerScript : MonoBehaviour
         GameObject[] player1Pieces = player1.ConstructPieces();
         foreach (GameObject piece in player1Pieces)
         {
-            Debug.Log("Piece: " + piece.GetComponent<PieceBehaviorScript>().GetID());
+            //Debug.Log("Piece: " + piece.GetComponent<PieceBehaviorScript>().GetID());
         }
 
         GameObject[,] gameGrid = grid.ConstructGrid(player1);
@@ -28,12 +28,15 @@ public class GameManagerScript : MonoBehaviour
                 if (gridSquare != null)
                 {
                     PieceBehaviorScript piece = gridSquare.GetComponent<PieceBehaviorScript>();
-                    Debug.Log("GridSquare: " + piece.GetID());
+                    //Debug.Log("GridSquare: " + piece.GetID());
                     piece.transform.position = visualBoard[i, j].transform.position; // Maybe just switch this to Construct Grid
+                    // testing
+                    Vector2Int squarePos = visualBoard[i,j].GetComponent<BoardSquareScript>().GetPosition();
+                    piece.SetPosition(squarePos);
                 }
                 else
                 {
-                    Debug.Log("GridSquare: null");
+                    //Debug.Log("GridSquare: null");
                 }
             }
         }

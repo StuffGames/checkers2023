@@ -104,7 +104,7 @@ public class PlayerBehaviorScript : MonoBehaviour
 
         // When mouse clicked, check if piece selected
         
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
             // Create raycast to see if mouse is over game piece
 
@@ -113,10 +113,27 @@ public class PlayerBehaviorScript : MonoBehaviour
             // if it is over game piece
             if (hit.collider is not null)
             {
-                // Send message to piece (that is now selected)
-                //hit.transform.GetComponent<PieceBehaviorScript>();
+                // Select piece clicked (behavior happens on the script attached to piece)
+                PieceBehaviorScript piece = hit.transform.GetComponent<PieceBehaviorScript>();
 
-                hit.transform.position = mousePosition;
+                foreach (GameObject p in pieces)
+                {
+                    p.GetComponent<PieceBehaviorScript>().isSelected = false;
+                }
+
+                piece.isSelected = true;
+
+                //hit.transform.position = mousePosition;
+            }
+            // add behavior for clicking on available square to move to
+
+            // else deselecting piece
+            else
+            {
+                foreach (GameObject p in pieces)
+                {
+                    p.GetComponent<PieceBehaviorScript>().isSelected = false;
+                }
             }
         }
     }

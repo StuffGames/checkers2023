@@ -47,7 +47,7 @@ public class GridBehaviorScript : MonoBehaviour
                 else grid[i, j] = null;
                 visualBoard[i, j] = Instantiate(boardTilePrefab, transform);
                 // work on this
-                visualBoard[i, j].GetComponent<BoardSquareScript>().SetPosition(new Vector2Int(j, i));
+                visualBoard[i, j].GetComponent<BoardSquareScript>().SetPosition(new Vector2Int(i, j));
                 if ((i + j) % 2 == 0) visualBoard[i, j].GetComponent<BoardSquareScript>().ChangeSprite();
                 visualBoard[i, j].transform.position = new Vector3(i - 3.5f, j - 3.5f);//new Vector3(3.5f - j, 3.5f - i);
 

@@ -6,7 +6,7 @@ public class BoardSquareScript : MonoBehaviour
 {
     public SpriteRenderer currentSprite;
 
-    private Vector2Int position;
+    [SerializeField] private Vector2Int position;
 
     public Sprite blueSqaure;
     public Sprite purpleSquare;
